@@ -5,6 +5,7 @@ targer
 code-generator.iml
 code-generator-basic/code-generator-basic.iml
 
+
 ### Java template
 # Compiled class file
 *.class
