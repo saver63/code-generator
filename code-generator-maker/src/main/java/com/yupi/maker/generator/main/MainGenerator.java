@@ -1,8 +1,10 @@
-package com.yupi.maker.generator;
+package com.yupi.maker.generator.main;
 
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.resource.ClassPathResource;
 import cn.hutool.core.util.StrUtil;
+import com.yupi.maker.generator.JarGenerator;
+import com.yupi.maker.generator.ScriptGenerator;
 import com.yupi.maker.generator.file.DynamicFileGenerator;
 import com.yupi.maker.meta.Meta;
 import com.yupi.maker.meta.MetaManager;
@@ -24,6 +26,13 @@ public class MainGenerator {
         if (!FileUtil.exist(outputPath)) {
             FileUtil.mkdir(outputPath);
         }
+
+        //从原始模板文件路径复制到生成的代码包中
+        String sourceRootPath = meta.getFileConfig().getSourceRootPath();
+        String sourceCopyDestPath = outputPath + File.separator + "./source";
+        FileUtil.copy(sourceRootPath,sourceCopyDestPath,false);
+
+
         //读取 resources目录
         ClassPathResource classPathResource = new ClassPathResource("");
         String inputResourcePath = classPathResource.getAbsolutePath();
