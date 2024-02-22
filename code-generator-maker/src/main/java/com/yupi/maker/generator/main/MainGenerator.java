@@ -1,5 +1,7 @@
 package com.yupi.maker.generator.main;
 
+
+import com.yupi.maker.model.DataModel;
 import freemarker.template.TemplateException;
 
 import java.io.IOException;

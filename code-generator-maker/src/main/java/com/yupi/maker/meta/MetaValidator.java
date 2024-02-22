@@ -13,7 +13,7 @@ import com.yupi.maker.meta.enums.ModelTypeEnum;
 import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 
 /**
@@ -47,6 +47,18 @@ public class MetaValidator {
             return;
         }
         for (ModelConfig.ModelsInfo modelInfo : modelInfoList) {
+            //为group,不校验
+            String groupKey = modelInfo.getGroupKey();
+            if (StrUtil.isNotBlank(groupKey)){
+                //生成中间参数，目标生成"--author","-outputText"
+                List<ModelConfig.ModelsInfo> subModelInfoList = modelInfo.getModels();
+                String allArgsStr = subModelInfoList.stream()
+                        .map(subModelInfo -> String.format("\"--%s\"", subModelInfo.getFieldName())).
+                        collect(Collectors.joining(", "));
+                modelInfo.setAllArgsStr(allArgsStr);
+                continue;
+            }
+            //输出路径默认值
             String fieldName = modelInfo.getFieldName();
             if (StrUtil.isBlank(fieldName)) {
                 throw new MetaException("未填写fileName");
@@ -99,6 +111,11 @@ public class MetaValidator {
         }
         for (FileConfig.FileInfo fileInfo : fileInfoList) {
 
+            //如果是组类别就不需要填写inputPath
+            String type = fileInfo.getType();
+            if (FileTypeEnum.Group.getValue().equals(type)){
+                continue;
+            }
             //inputPath: 必填
             String inputPath = fileInfo.getInputPath();
             if (StrUtil.isBlank(inputPath)) {
@@ -110,7 +127,7 @@ public class MetaValidator {
                 fileInfo.setOutputPath(inputPath);
             }
             //type: 默认inputPath 有文件后缀(比如.java)默认为file,否则就dir
-            String type = fileInfo.getType();
+
             if (StrUtil.isBlank(type)) {
                 //无文件后缀
                 if (StrUtil.isBlank(FileUtil.getSuffix(inputPath))) {
