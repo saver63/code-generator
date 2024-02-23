@@ -10,7 +10,6 @@ import com.yupi.maker.meta.enums.FileGenerateTypeEnum;
 import com.yupi.maker.meta.enums.FileTypeEnum;
 import com.yupi.maker.meta.enums.ModelTypeEnum;
 
-import java.io.File;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -42,16 +41,16 @@ public class MetaValidator {
         if (modelConfig == null) {
             return;
         }
-        List<ModelConfig.ModelsInfo> modelInfoList = modelConfig.getModels();
+        List<ModelConfig.ModelInfo> modelInfoList = modelConfig.getModels();
         if (CollUtil.isEmpty(modelInfoList)) {
             return;
         }
-        for (ModelConfig.ModelsInfo modelInfo : modelInfoList) {
+        for (ModelConfig.ModelInfo modelInfo : modelInfoList) {
             //为group,不校验
             String groupKey = modelInfo.getGroupKey();
             if (StrUtil.isNotBlank(groupKey)){
                 //生成中间参数，目标生成"--author","-outputText"
-                List<ModelConfig.ModelsInfo> subModelInfoList = modelInfo.getModels();
+                List<ModelConfig.ModelInfo> subModelInfoList = modelInfo.getModels();
                 String allArgsStr = subModelInfoList.stream()
                         .map(subModelInfo -> String.format("\"--%s\"", subModelInfo.getFieldName())).
                         collect(Collectors.joining(", "));

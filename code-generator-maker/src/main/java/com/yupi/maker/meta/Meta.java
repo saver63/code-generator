@@ -46,11 +46,11 @@ public class Meta {
     @NoArgsConstructor
     @Data
     public static class ModelConfig {
-        private List<ModelsInfo> models;
+        private List<ModelInfo> models;
 
         @NoArgsConstructor
         @Data
-        public static class ModelsInfo {
+        public static class ModelInfo {
             private String fieldName;
             private String type;
             private String description;
@@ -58,7 +58,7 @@ public class Meta {
             private String abbr;
             private String groupKey;
             private String groupName;
-            private List<ModelsInfo> models;
+            private List<ModelInfo> models;
             private String condition;
 
             //中间参数：不用再json中写的，而是为了系统方便临时生成的
