@@ -1,5 +1,5 @@
 {
-    "name": "springboot-init-generator",
+    "name": "springboot-init-meta.json-generator",
     "description": "spring Boot 模板代码生成器",
     "fileConfig": {
         "sourceRootPath": "E:/work/project/code-generator/code-generator-maker/.temp/1/springboot-init",
@@ -218,8 +218,8 @@
                 "generateType": "dynamic"
             },
             {
-                "inputPath": "springboot-init.iml",
-                "outputPath": "springboot-init.iml",
+                "inputPath": "springboot-init-meta.json.iml",
+                "outputPath": "springboot-init-meta.json.iml",
                 "type": "file",
                 "generateType": "static"
             },
@@ -390,7 +390,7 @@
                         "fieldName": "description",
                         "type": "String",
                         "description": "接口文档描述",
-                        "defaultValue": "springboot-init"
+                        "defaultValue": "springboot-init-meta.json"
                     },
                     {
                         "fieldName": "title",

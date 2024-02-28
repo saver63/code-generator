@@ -29,7 +29,7 @@ public class TemplateMakerTest  {
         String projectPath = System.getProperty("user.dir");
         //要挖坑的项目根目录
         String originProjectPath = FileUtil.getAbsolutePath(new File(projectPath).getParentFile())
-                + File.separator + "code-generator-demo-projects/springboot-init";
+                + File.separator + "code-generator-demo-projects/springboot-init-meta.json";
         String fileInputPath1 = "src/main/java/com/yupi/springbootinit/common";
 
 
@@ -70,7 +70,7 @@ public class TemplateMakerTest  {
         String projectPath = System.getProperty("user.dir");
         //要挖坑的项目根目录
         String originProjectPath = FileUtil.getAbsolutePath(new File(projectPath).getParentFile())
-                + File.separator + "code-generator-demo-projects/springboot-init";
+                + File.separator + "code-generator-demo-projects/springboot-init-meta.json";
         String fileInputPath1 = "./";
 
 
@@ -111,7 +111,7 @@ public class TemplateMakerTest  {
      */
     @Test
     public void makeSpringBootTemplate(){
-        String rootPath = "examples/springboot-init/";
+        String rootPath = "examples/springboot-init-meta.json/";
         String congfigStr = ResourceUtil.readUtf8Str(rootPath+"templateMaker.json");
         TemplateMakerConfig templateMakerConfig = JSONUtil.toBean(congfigStr, TemplateMakerConfig.class);
         long id = TemplateMaker.makeTemplate(templateMakerConfig);

@@ -1,8 +1,8 @@
 {
   "id": 1,
   "meta": {
-    "name": "springboot-init-generator",
+    "name": "springboot-init-meta.json-generator",
     "description": "spring Boot 模板代码生成器"
   },
-  "originProjectPath": "../../../code-generator-demo-projects/springboot-init"
+  "originProjectPath": "../../../code-generator-demo-projects/springboot-init-meta.json"
 }

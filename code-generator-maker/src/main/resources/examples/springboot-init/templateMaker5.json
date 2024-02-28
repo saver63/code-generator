@@ -28,8 +28,8 @@
         "fieldName": "description",
         "type": "String",
         "description": "接口文档描述",
-        "defaultValue": "springboot-init",
-        "replaceText": "springboot-init"
+        "defaultValue": "springboot-init-meta.json",
+        "replaceText": "springboot-init-meta.json"
       },
       {
         "fieldName": "version",
