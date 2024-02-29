@@ -19,7 +19,7 @@ import {
 import {history} from "@umijs/max";
 import {useSearchParams} from "@@/exports";
 import {COS_HOST} from "@/constants";
-
+import ModelConfigForm from "@/pages/Generator/Add/Components/ModelConfigForm";
 
 
 /**
@@ -41,7 +41,8 @@ const GeneratorAddPage: React.FC = () => {
     }
     try {
       const res = await getGeneratorVoByIdUsingGet({
-        id
+        // @ts-ignore
+        id,
       });
       //之前上传时是对象转换成路径字符串，现在得是字符串转换成对象
       if (res.data){
@@ -103,7 +104,7 @@ const GeneratorAddPage: React.FC = () => {
       const res= await editGeneratorUsingPost(values);
       if (res.data){
         message.success("更新成功");
-        history.push(`/generator/detail/${res.data}`);
+        history.push(`/generator/detail/${id}`);
       }
     }catch (error:any){
       message.error("更新失败"+error.message);
@@ -136,6 +137,7 @@ const GeneratorAddPage: React.FC = () => {
     //调用接口
    if (id){
      await doUpdate({
+       // @ts-ignore
        id,
        ...values
      });
@@ -180,8 +182,12 @@ const GeneratorAddPage: React.FC = () => {
         <StepsForm.StepForm
           name="modelCongig"
           title="模型配置"
+          onFinish={async (values)=>{
+            console.log(values);
+            return true;
+          }}
         >
-          {/*todo 待补充*/}
+         <ModelConfigForm formRef={formRef} oldData = {oldData} />
         </StepsForm.StepForm>
         <StepsForm.StepForm
           name="dist"
