@@ -146,7 +146,7 @@ const GeneratorAddPage: React.FC = () => {
 
   return (
     <>
-      <Alert message="如果不需要在线制作功能，可不需要填写" type="warning" closable />
+      <Alert message="如果需要在线制作功能，可以不需要填写文件配置" type="warning" closable />
       <div style={{ marginBottom: 16 }} />
       <ProCard>
         {/*创建或已加载要更新的数据时，才渲染表单，顺利填充默认值*/}
