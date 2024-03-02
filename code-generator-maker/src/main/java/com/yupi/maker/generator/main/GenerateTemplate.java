@@ -15,14 +15,16 @@ import java.io.File;
 import java.io.IOException;
 
 public abstract class GenerateTemplate {
-    public void doGenerate()throws TemplateException, IOException, InterruptedException {
 
-        Meta meta = MetaManager.getMetaObject();
-        System.out.println(meta);
 
-        //输出的根路径
-        String projectPath = System.getProperty("user.dir");
-        String outputPath = projectPath + File.separator + "generated" + File.separator + meta.getName();
+    /**
+     * 生成
+     *
+     * @throws TemplateException
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public void doGenerate(Meta meta,String outputPath)throws TemplateException, IOException, InterruptedException {
         if (!FileUtil.exist(outputPath)) {
             FileUtil.mkdir(outputPath);
         }
@@ -41,6 +43,19 @@ public abstract class GenerateTemplate {
 
         //5.生成精简版的程序（产物包）-运行必须要用的
         buildDist(outputPath, sourceCopyDestPath,jarPath,shellOutputFilePath);
+
+
+    }
+
+    public void doGenerate()throws TemplateException, IOException, InterruptedException {
+
+        Meta meta = MetaManager.getMetaObject();
+
+        //输出的根路径
+        String projectPath = System.getProperty("user.dir");
+        String outputPath = projectPath + File.separator + "generated" + File.separator + meta.getName();
+
+        doGenerate(meta,outputPath);
 
 
     }
@@ -94,8 +109,7 @@ public abstract class GenerateTemplate {
 
     protected void generateCode(Meta meta, String outputPath) throws IOException, TemplateException {
         //读取 resources目录
-        ClassPathResource classPathResource = new ClassPathResource("");
-        String inputResourcePath = classPathResource.getAbsolutePath();
+        String inputResourcePath = "";
 
         //java包的基础路径
         //com.yupi
