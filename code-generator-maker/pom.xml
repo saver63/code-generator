@@ -6,7 +6,7 @@
 
     <groupId>com.yupi</groupId>
     <artifactId>code-generator-maker</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
