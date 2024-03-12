@@ -4,7 +4,7 @@ import { history } from '@umijs/max';
 import defaultSettings from '../config/defaultSettings';
 import { AvatarDropdown } from './components/RightContent/AvatarDropdown';
 import { requestConfig } from './requestConfig';
-import { getuser } from '@/services/backend/userController';
+import { getLoginUserUsingGet } from '@/services/backend/userController';
 import logo from '@/assets/logo.png';
 
 const loginPath = '/user/login';
@@ -20,7 +20,7 @@ export async function getInitialState(): Promise<InitialState> {
   const { location } = history;
   if (location.pathname !== loginPath) {
     try {
-      const res = await getUser();
+      const res = await getLoginUserUsingGet();
       initialState.currentUser = res.data;
     } catch (error: any) {
       // 如果未登录

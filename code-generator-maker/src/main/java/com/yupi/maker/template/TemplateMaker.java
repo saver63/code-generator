@@ -257,6 +257,7 @@ public class TemplateMaker {
             String groupName = fileGroupConfig.getGroupName();
 
             Meta.FileConfig.FileInfo goupFileInfo = new Meta.FileConfig.FileInfo();
+            goupFileInfo.setType(FileTypeEnum.GROUP.getValue());
             goupFileInfo.setCondition(condition);
             goupFileInfo.setGroupKey(groupKey);
             goupFileInfo.setGroupName(groupName);

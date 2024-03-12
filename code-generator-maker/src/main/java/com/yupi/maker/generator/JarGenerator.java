@@ -12,7 +12,7 @@ public class JarGenerator {
 
         String winMavenCommand = "mvn.cmd clean package -DiskTests=true";
         String otherMavenCommand = "mvn clean package -DiskTests=true";
-        String mavenCommand = winMavenCommand;
+        String mavenCommand = otherMavenCommand;
 
         //为命令选择执行的路径，在项目所在的路径打jar包
         //maven要按空格拆（命令本身也是按空格来区分参数）

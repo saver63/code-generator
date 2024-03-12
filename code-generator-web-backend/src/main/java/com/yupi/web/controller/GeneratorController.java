@@ -460,7 +460,7 @@ public class GeneratorController {
         //要注意，如果不是windows系统，找generator文件而不是bat
         File scriptFile = FileUtil.loopFiles(unzipDistDir, 2, null)
                 .stream()
-                .filter(file -> file.isFile() && "generator.bat".equals(file.getName()))
+                .filter(file -> file.isFile() && "generator".equals(file.getName()))
                 .findFirst()
                 .orElseThrow(RuntimeException::new);
 
@@ -477,9 +477,14 @@ public class GeneratorController {
         File scriptDir = scriptFile.getParentFile();
 
 
-        //注意，如果是mac/linux系统,要用"./generator"
-        String scriptAbsolutePath = scriptFile.getAbsolutePath().replace("\\", "/");
-        String[] commands = new String[]{scriptAbsolutePath, "json-generator", "--file=" + dataModelFilePath};
+        // win系统
+//        String scriptAbsolutePath = scriptFile.getAbsolutePath().replace("\\", "/");
+//        String[] commands = new String[]{scriptAbsolutePath, "json-generator", "--file=" + dataModelFilePath};
+
+        //如果是mac/linux系统，要用"./generator"
+        String scriptAbsolutePath = scriptFile.getAbsolutePath();
+        String[] commands = new String[]{scriptAbsolutePath,"json-generator", "--file=" + dataModelFilePath};
+
 
         //为命令选择执行的路径，在项目所在的路径打jar包
         //maven要按空格拆（命令本身也是按空格来区分参数）

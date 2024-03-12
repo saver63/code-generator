@@ -112,7 +112,7 @@ public class MetaValidator {
 
             //如果是组类别就不需要填写inputPath
             String type = fileInfo.getType();
-            if (FileTypeEnum.Group.getValue().equals(type)){
+            if (FileTypeEnum.GROUP.getValue().equals(type)){
                 continue;
             }
             //inputPath: 必填

@@ -1,5 +1,6 @@
 ### my Custom
 
+application-prod.yml
 application-local.yml
 generated
 .temp
